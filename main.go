@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
 func multiply(a int, b int) int {
 	// func multiply(a, b int) int { 만약 모든 파라미터의 타입이 같은 경우 맨 뒤에 한번만 써줘도 됨.
@@ -12,13 +9,43 @@ func multiply(a int, b int) int {
 
 // Go는 여러개의 return값을 넘길 수 있음
 // Go에서는 모든 것이 다 package래..!!
-func lenAndUpper(name string) (int, string) {
-	return len(name), strings.ToUpper(name)
-}
+// func lenAndUpper(name string) (int, string) {
+// 	return len(name), strings.ToUpper(name)
+// }
+
+// naked return이라고 하는 문법으로 함수를 선언하면서 동시에 리턴값을 선언함.
+// func lenAndUpper2(name string) (length int, uppercase string) {
+// 	defer fmt.Println("I'm done!") // defer는 함수가 끝난 바로 직후에 실행되는 것을 의미함.
+// 	length = len(name)
+// 	uppercase = strings.ToUpper(name)
+// 	return
+// }
 
 // 여러개의 arguments를 받아오고 싶은 경우
-func repeatMe(words ...string) {
-	fmt.Println(words)
+// func repeatMe(words ...string) {
+// 	fmt.Println(words) // [hannah jihye santi nico]를 출력함
+// }
+
+// for과 range를 사용하는 방법
+// func superAdd(numbers ...int) int {
+// 	// for index, number := range numbers {
+// 	// 	fmt.Println(index, number)
+// 	// }
+// 	// for i := 0; i < len(numbers); i++ {
+// 	// 	fmt.Println(numbers[i])
+// 	// }
+// 	total := 0
+// 	for _, number := range numbers {
+// 		total += number
+// 	}
+// 	return total
+// }
+
+func canIDrink(age int) bool {
+	if koreanAge := age + 2; koreanAge < 18 { // if-else에서만 사용할 변수를 이런식으로 생성할 수 있음.
+		return false
+	}
+	return true
 }
 
 func main() {
@@ -42,5 +69,13 @@ func main() {
 	// totalLength2, _ := lenAndUpper("hannah")
 	// fmt.Println(totalLength2)
 
-	repeatMe("hannah", "jihye", "santi", "nico")
+	// repeatMe("hannah", "jihye", "santi", "nico")
+
+	// totalLen, upperName := lenAndUpper2("hannah")
+	// fmt.Println(totalLen, upperName)
+
+	// total := superAdd(1, 2, 3, 4, 5, 6)
+	// fmt.Println(total)
+
+	fmt.Println(canIDrink(16))
 }
