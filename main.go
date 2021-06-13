@@ -41,11 +41,39 @@ func multiply(a int, b int) int {
 // 	return total
 // }
 
-func canIDrink(age int) bool {
-	if koreanAge := age + 2; koreanAge < 18 { // if-else에서만 사용할 변수를 이런식으로 생성할 수 있음.
-		return false
-	}
-	return true
+// About if
+// func canIDrink(age int) bool {
+// 	if koreanAge := age + 2; koreanAge < 18 { // if-else에서만 사용할 변수를 이런식으로 생성할 수 있음.
+// 		return false
+// 	}
+// 	return true
+// }
+
+// About Switch
+// func canIDrink(age int) bool {
+// 	switch koreanAge := age + 2; koreanAge { // if 처럼 내부변수 설정이 가능함
+// 	case 10:
+// 		return false
+// 	case 18:
+// 		return true
+// 	}
+// 	// 이런식으로도 사용 가능함.
+// 	// switch {
+// 	// case age < 18:
+// 	// 	return false
+// 	// case age == 18:
+// 	// 	return true
+// 	// case age > 60:
+// 	// 	return false
+// 	// }
+// 	return false
+// }
+
+// Struct
+type person struct {
+	name    string
+	age     int
+	favFood []string
 }
 
 func main() {
@@ -77,5 +105,38 @@ func main() {
 	// total := superAdd(1, 2, 3, 4, 5, 6)
 	// fmt.Println(total)
 
-	fmt.Println(canIDrink(16))
+	// fmt.Println(canIDrink(18))
+
+	// Pointer!! &는 주소를 보는 기호, *은 주소안의 값을 보는 기호
+	// a := 2
+	// b := a
+	// a = 5
+	// fmt.Println(a, b) // 5 2
+
+	// c := 3
+	// d := &c
+	// c = 6
+	// fmt.Println(c, *d) // 6 6
+
+	// e := 4
+	// f := &e
+	// *f = 7         // f를 통해서 e의 값을 바꿀 수 있음.
+	// fmt.Println(e) // 7
+
+	// Array and Slice
+	// names := [3]string{"hannah", "jihye", "santi"} // Array는 length가 정해져 있는 배열
+	// ages := []int{12, 32, 45, 32}                  // Slice는 length가 정해져있지 않은 배열
+	// ages = append(ages, 59, 86)                    // append 함수를 이용해서 slice에 새로운 값을 넣을 수 있음.
+	// fmt.Println(names, ages)
+
+	// Map
+	// hannah := map[string]string{"name": "hannah", "age": "20"}
+	// for _, value := range hannah { // ignore key using _
+	// 	fmt.Println(value)
+	// }
+
+	// Struct
+	favFood := []string{"bread", "fruits"}
+	hannah := person{name: "hannah", age: 27, favFood: favFood}
+	fmt.Println(hannah)
 }
